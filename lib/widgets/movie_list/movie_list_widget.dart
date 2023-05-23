@@ -133,6 +133,14 @@ class _MovieListWidgetState extends State<MovieListWidget> {
     _searchController.addListener(_searchMovies);
   }
 
+  void _onMovieTap(int index) {
+    final id = _movies[index].id;
+    Navigator.of(context).pushNamed(
+      '/main_screen/movi_details',
+      arguments: id,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -203,9 +211,8 @@ class _MovieListWidgetState extends State<MovieListWidget> {
                   Material(
                     color: Colors.transparent,
                     child: InkWell(
-                      borderRadius: BorderRadius.circular(10),
-                      onTap: () {},
-                    ),
+                        borderRadius: BorderRadius.circular(10),
+                        onTap: () => _onMovieTap(index)),
                   ),
                 ],
               ),
