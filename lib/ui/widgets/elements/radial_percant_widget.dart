@@ -2,14 +2,14 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-class Example extends StatefulWidget {
-  Example({Key? key}) : super(key: key);
+class RadialPercantWidget extends StatefulWidget {
+  const RadialPercantWidget({Key? key}) : super(key: key);
 
   @override
-  _ExampleState createState() => _ExampleState();
+  _RadialPercantWidgetState createState() => _RadialPercantWidgetState();
 }
 
-class _ExampleState extends State<Example> {
+class _RadialPercantWidgetState extends State<RadialPercantWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
