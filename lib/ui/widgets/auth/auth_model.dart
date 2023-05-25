@@ -57,25 +57,25 @@ class AutModel extends ChangeNotifier {
   }
 }
 
-class AutProvider extends InheritedNotifier {
-  final AutModel model;
+// class AutProvider extends InheritedNotifier {
+//   final AutModel model;
 
-  const AutProvider({
-    Key? key,
-    required this.model,
-    required Widget child,
-  }) : super(
-          key: key,
-          notifier: model,
-          child: child,
-        );
-  static AutProvider? watch(BuildContext context) {
-    return context.dependOnInheritedWidgetOfExactType<AutProvider>();
-  }
+//   const AutProvider({
+//     Key? key,
+//     required this.model,
+//     required Widget child,
+//   }) : super(
+//           key: key,
+//           notifier: model,
+//           child: child,
+//         );
+//   static AutProvider? watch(BuildContext context) {
+//     return context.dependOnInheritedWidgetOfExactType<AutProvider>();
+//   }
 
-  static AutProvider? read(BuildContext context) {
-    final widget =
-        context.getElementForInheritedWidgetOfExactType<AutProvider>()?.widget;
-    return widget is AutProvider ? widget : null;
-  }
-}
+//   static AutProvider? read(BuildContext context) {
+//     final widget =
+//         context.getElementForInheritedWidgetOfExactType<AutProvider>()?.widget;
+//     return widget is AutProvider ? widget : null;
+//   }
+// }
