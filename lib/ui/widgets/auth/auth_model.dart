@@ -22,7 +22,7 @@ class AutModel extends ChangeNotifier {
     final login = loginTextController.text;
     final password = passwordTextController.text;
 
-    if (login.isEmpty || password.isNotEmpty) {
+    if (login.isEmpty || password.isEmpty) {
       _errorMessage = 'Заполните логин и пароль';
       notifyListeners();
       return;
@@ -31,7 +31,6 @@ class AutModel extends ChangeNotifier {
     _isAuthProgress = true;
     notifyListeners();
     String? sessionId;
-
     try {
       sessionId = await _apiClient.auth(
         username: login,
@@ -40,12 +39,12 @@ class AutModel extends ChangeNotifier {
     } catch (e) {
       _errorMessage = 'Неправильный логи и пароль!';
     }
-
     _isAuthProgress = false;
     if (_errorMessage != null) {
       notifyListeners();
       return;
     }
+
     if (sessionId == null) {
       _errorMessage = 'Неизвестная ошибка, повторите попытку';
       notifyListeners();

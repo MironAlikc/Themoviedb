@@ -137,8 +137,8 @@ class _AuthButtonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const color = Color(0xFF01B4E4);
     final model = AutProvider.watch(context)?.model;
+    const color = Color(0xFF01B4E4);
     final onPressed =
         model?.canStartAuth == true ? () => model?.auth(context) : null;
     final child = model?.isAuthProgress == true
@@ -148,7 +148,6 @@ class _AuthButtonWidget extends StatelessWidget {
             child: CircularProgressIndicator(strokeWidth: 2),
           )
         : const Text('Login');
-
     return ElevatedButton(
       onPressed: onPressed,
       style: ButtonStyle(
@@ -158,7 +157,10 @@ class _AuthButtonWidget extends StatelessWidget {
           const TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
         ),
         padding: MaterialStateProperty.all(
-          const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
+          const EdgeInsets.symmetric(
+            horizontal: 15,
+            vertical: 8,
+          ),
         ),
       ),
       child: child,
@@ -173,6 +175,7 @@ class _ErrorMessegeWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final errorMessage = AutProvider.watch(context)?.model.errorMessage;
     if (errorMessage == null) return const SizedBox.shrink();
+
     return Padding(
       padding: const EdgeInsets.only(bottom: 20),
       child: Text(

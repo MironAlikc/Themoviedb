@@ -3,10 +3,9 @@ import 'dart:io';
 
 class ApiClient {
   final _client = HttpClient();
-  // https://api.themoviedb.org/3/authentication/token/new?api_key={{apiKey}}
   static const _host = 'https://api.themoviedb.org/3';
   // static const _imageUrl = 'https://image.tmdb.org/t/p/w500';
-  static const _apiKey = '62f25783c1a526088cc159cfef31f64f';
+  static const _apiKey = 'a733e8adab28918842147f2ebb43181a';
 
   Future<String> auth({
     required String username,
@@ -14,7 +13,10 @@ class ApiClient {
   }) async {
     final token = await _makeToken();
     final validToken = await _validateUser(
-        username: username, password: password, requestToken: token);
+      username: username,
+      password: password,
+      requestToken: token,
+    );
     final sessionId = await _makeSession(requestToken: validToken);
     return sessionId;
   }
@@ -76,11 +78,12 @@ class ApiClient {
       'request_token': requestToken,
     };
     final request = await _client.postUrl(url);
+
     request.headers.contentType = ContentType.json;
     request.write(jsonEncode(parameters));
     final response = await request.close();
-
     final json = (await response.jsonDecode()) as Map<String, dynamic>;
+
     final sessionId = json['session_id'] as String;
     return sessionId;
   }
