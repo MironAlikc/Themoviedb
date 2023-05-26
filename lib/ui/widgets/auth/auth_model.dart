@@ -37,8 +37,19 @@ class AutModel extends ChangeNotifier {
         username: login,
         password: password,
       );
-    } catch (e) {
-      _errorMessage = 'Неправильный логи и пароль!';
+    } on ApiClientException catch (e) {
+      switch (e.type) {
+        case ApiClientExceptionType.Network:
+          _errorMessage =
+              'Сервер не доступен. Проверте подключение к интеренту';
+          break;
+        case ApiClientExceptionType.Auth:
+          _errorMessage = 'Неправильный логи и пароль!';
+          break;
+        case ApiClientExceptionType.Other:
+          _errorMessage = 'Произошла ошибка. Попробуйте еще раз';
+          break;
+      }
     }
     _isAuthProgress = false;
     if (_errorMessage != null) {
