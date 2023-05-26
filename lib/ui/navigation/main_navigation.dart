@@ -7,7 +7,8 @@ import 'package:themoviedb/ui/widgets/main_screen/main_screen_widget.dart';
 import 'package:themoviedb/ui/widgets/movie_details/movie_details_widget.dart';
 
 class MainNavigationRouteNames {
-  static const auth = 'auth';
+  // static const auth = 'auth';
+  static const auth = '/';
   static const mainScreen = '/';
   static const movieDetails = '/moie_details';
 }
