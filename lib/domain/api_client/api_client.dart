@@ -25,9 +25,11 @@ class ApiClientException implements Exception {
 class ApiClient {
   final _client = HttpClient();
   static const _host = 'https://api.themoviedb.org/3';
-  // static const _imageUrl = 'https://image.tmdb.org/t/p/w500';
+  static const _imageUrl = 'https://image.tmdb.org/t/p/w500';
   static const _apiKey = '67ebcd297e43e6ea6d0c47bcca1abe1e';
   //static const _apiKey = '0a2a46b5593a0978cc8e87ba34037430';
+
+  static String imageUrl(String path) => _imageUrl + path;
 
   Future<String> auth({
     required String username,
@@ -87,7 +89,7 @@ class ApiClient {
       request.headers.contentType = ContentType.json;
       request.write(jsonEncode(bodyParameters));
       final response = await request.close();
-      final double json = (await response.jsonDecode());
+      final dynamic json = (await response.jsonDecode());
       _validateResponse(response, json);
 
       final result = parser(json);
@@ -119,7 +121,6 @@ class ApiClient {
     final parser = (dynamic json) {
       final jsonMap = json as Map<String, dynamic>;
       final response = PopularMovieResponse.fromJson(jsonMap);
-
       return response;
     };
     final result = _get(

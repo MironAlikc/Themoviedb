@@ -1,12 +1,12 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:themoviedb/ui/widgets/movie_list/movie_list_widget.dart';
+import 'package:themoviedb/domain/entity/movie.dart';
+
+part 'popular_movie_response.g.dart';
 
 @JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class PopularMovieResponse {
   final int page;
-  @JsonKey(
-    name: 'results',
-  )
+  @JsonKey(name: 'results')
   final List<Movie> movies;
   final int totalResults;
   final int totalPages;
@@ -21,5 +21,5 @@ class PopularMovieResponse {
   factory PopularMovieResponse.fromJson(Map<String, dynamic> json) =>
       _$PopularMovieResponseFromJson(json);
 
-  Map<String, dynamic> toJson() => _$PopularMovieResponseFromJson(this);
+  Map<String, dynamic> toJson() => _$PopularMovieResponseToJson(this);
 }

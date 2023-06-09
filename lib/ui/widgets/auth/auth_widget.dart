@@ -80,7 +80,6 @@ class _FormWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final model = NotifierProvider.read<AutModel>(context);
-
     const textStyle = TextStyle(
       fontSize: 16,
       color: Color(0xFF212529),
