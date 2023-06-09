@@ -1,6 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
-//part 'movie.g.dart';
+part 'movie.g.dart';
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class Movie {
@@ -37,9 +37,9 @@ class Movie {
     required this.voteAverage,
   });
 
-  //factory Movie.fromJson(Map<String, dynamic> json) => _$MovieFromJson(json);
+  factory Movie.fromJson(Map<String, dynamic> json) => _$MovieFromJson(json);
 
-  //Map<String, dynamic> toJson() => _$MovieFromJson(this);
+  Map<String, dynamic> toJson() => _$MovieToJson(this);
 
   static DateTime? _parsDateFromString(String? rawDate) {
     if (rawDate == null || rawDate.isEmpty) return null;
